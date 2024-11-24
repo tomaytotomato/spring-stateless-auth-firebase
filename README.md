@@ -53,21 +53,17 @@ Select "Google"
 
 ### Notes
 
-In the Spring boot service, the `/user` endpoint makes use of the `JwtAuthenticationToken` object, which is part of the Spring Security OAuth2 resource server configuration [application.yml](src/main/resources/application.yml)
+In the Spring boot service, the `/user` endpoint makes use of the `JwtAuthenticationToken` object, which is part of the Spring Security OAuth2 resource server configuration as configured in [application.yml](src/main/resources/application.yml)
 
-This configuration allows your service to validate and process incoming JWT tokens, typically issued by an OAuth2 authorization server like Firebase. 
+This configuration allows the service to validate and process incoming JWT tokens, which have been issued by Firebase.
 
-In this case, the JWT token is validated against the JSON Web Key Set (JWKS) URI provided by Firebase and the issuer URI, as configured in the Spring Security configuration.
+Spring security validates the JWT token is validated with Firebase's JSON Web Key Set (JWKS) URI - https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com 
 
-Using `JwtAuthenticationToken` is particularly useful when working with JWT-based authentication, as it provides richer information about the authenticated user. 
+For the demo endpoint in [UserController.java](src/main/java/com/tomaytotomato/auth/UserController.java) the `JwtAuthenticationToken` object is particularly useful when working with JWT-based authentication, as it provides richer information about the authenticated user. 
 
-Compared to the `Principal` or `Authentication` objects, which contain limited details, `JwtAuthenticationToken` exposes the token’s claims and user attributes, making it more convenient for accessing user information in the endpoint.
+Traditionally `Principal` or `Authentication` objects are used but they contain limited details, `JwtAuthenticationToken` exposes the token’s claims and user attributes, making it more convenient for accessing user information in the endpoint.
 
-While alternatives like `OAuth2User` or `OAuth2AuthenticationToken` are also available, they are typically used in OAuth2 flows that involve third-party login providers (such as Google or Facebook). 
-
-These alternatives would require additional configuration, such as implementing a custom provider and adding it to the Spring Security filter chain. 
-
-However, this setup goes beyond the scope of this demo, which focuses on JWT-based stateless authentication, leveraging Firebase as the authorization source.
+There are alternative authentication objects like `OAuth2User` or `OAuth2AuthenticationToken`, these alternatives would require additional configuration, such as implementing a [custom provider](https://www.baeldung.com/spring-security-authentication-provider) and adding it to the Spring Security filter chain. 
 
 ### References
 
