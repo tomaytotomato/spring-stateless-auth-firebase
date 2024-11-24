@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: stateless-auth-jwt-firebase
+  jackson:
+    serialization:
+      indent-output: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+          issuer-uri: https://securetoken.google.com/${VITE_FIREBASE_PROJECT_ID}
+          jws-algorithms: RS256
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.security: DEBUG
