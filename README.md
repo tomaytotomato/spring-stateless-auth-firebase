@@ -2,6 +2,8 @@
 
 This project demonstrates JWT-based stateless authentication using Firebase for identity management and Vue.js for the frontend client.
 
+The Spring boot backend functions as a resource server and validates the JWT token with Firebase. 
+
 ## Getting Started
 
 This project uses Maven to build and install the frontend and backend dependencies. Manual installation is not required!
