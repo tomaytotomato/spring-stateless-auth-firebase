@@ -4,6 +4,9 @@ This project demonstrates JWT-based stateless authentication using Firebase for 
 
 The Spring boot backend functions as a resource server and validates the JWT token with Firebase. 
 
+![app_screenshot_login.png](docs/app_screenshot_login.png)
+![app_screenshot_authenticated.png](docs/app_screenshot_authenticated.png)
+
 ## Getting Started
 
 This project uses Maven to build and install the frontend and backend dependencies. Manual installation is not required!
@@ -16,7 +19,7 @@ In this file, add the following environment variables. These values can be found
 - If you haven't already added an app, click the **"Add App"** button to create a new web app.
 - After creation, the following values will be visible and can be added in the format below to the `.env` file.
 
-![firebase_config.png](firebase_config.png)
+![firebase_config.png](docs/firebase_config.png)
 
 Add them in the following format. Vite will automatically process these variables and make them available in the frontend.
 ```
@@ -46,7 +49,7 @@ This requires you to enable the Google provider on your Firebase account.
 Navigate to the Authentication section in Firebase console and click "Add New Provider"
 Select "Google"
 
-![firebase_google_provider.png](firebase_google_provider.png)
+![firebase_google_provider.png](docs/firebase_google_provider.png)
 
 ### Notes
 
