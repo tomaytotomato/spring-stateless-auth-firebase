@@ -48,13 +48,33 @@ Select "Google"
 
 ![firebase_google_provider.png](firebase_google_provider.png)
 
+### Notes
+
+In the Spring boot service, the `/user` endpoint makes use of the `JwtAuthenticationToken` object, which is part of the Spring Security OAuth2 resource server configuration [application.yml](src/main/resources/application.yml)
+
+This configuration allows your service to validate and process incoming JWT tokens, typically issued by an OAuth2 authorization server like Firebase. 
+
+In this case, the JWT token is validated against the JSON Web Key Set (JWKS) URI provided by Firebase and the issuer URI, as configured in the Spring Security configuration.
+
+Using `JwtAuthenticationToken` is particularly useful when working with JWT-based authentication, as it provides richer information about the authenticated user. 
+
+Compared to the `Principal` or `Authentication` objects, which contain limited details, `JwtAuthenticationToken` exposes the token’s claims and user attributes, making it more convenient for accessing user information in the endpoint.
+
+While alternatives like `OAuth2User` or `OAuth2AuthenticationToken` are also available, they are typically used in OAuth2 flows that involve third-party login providers (such as Google or Facebook). 
+
+These alternatives would require additional configuration, such as implementing a custom provider and adding it to the Spring Security filter chain. 
+
+However, this setup goes beyond the scope of this demo, which focuses on JWT-based stateless authentication, leveraging Firebase as the authorization source.
+
 ### References
 
 - [Firebase Authentication Documentation](https://firebase.google.com/docs/auth)
 - [JWT.io](https://jwt.io/)
 - [Vue.js Documentation](https://vuejs.org/)
 - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-
+- [Spring Security API Authentication Firebase @Medium](https://medium.com/@purikunal22/securing-springboot-api-using-firebase-authentication-16d72dd250cc)
+- [Spring Security Auth with Firebase @Medium](https://medium.com/comsystoreply/authentication-with-firebase-auth-and-spring-security-fcb2c1dc96d)
+- [Spring Security Oauth2 Docs](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
 
 # Tags
 
