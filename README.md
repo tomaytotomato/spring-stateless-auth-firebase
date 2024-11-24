@@ -1,4 +1,4 @@
-# Spring Stateless Authentication
+# Spring Stateless Authentication Firebase
 
 This project demonstrates JWT-based stateless authentication using Firebase for identity management and Vue.js for the frontend client.
 
